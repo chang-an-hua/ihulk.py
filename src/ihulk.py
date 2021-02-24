@@ -3,13 +3,15 @@
 # ----------------------------------------------------------------------------------------------
 # IHULK - Improved HTTP Unbearable Load King
 # version - 1.0
-# Borrowed from hulk by Barry Shteiman
+#
 # this tool is a Dos tool
 # that is meant to put heavy load on HTTP servers in order to bring them
 # to their knees by exhausting the resource pool,
 # its is meant for research purposes only
 # and any malicious usage of this tool is prohibited.
-# Author : Aamir khan
+#
+# orginal author :  Barry Shteiman
+# edited and maintain by : Aamir khan
 # ----------------------------------------------------------------------------------------------
 
 from urllib.request import Request, urlopen, HTTPError, URLError
@@ -109,6 +111,7 @@ def httpcall(url):
 
     try:
         urlopen(request)
+        inc_counter()
     except HTTPError as e:
         set_flag(1)
         print('Response code 500')
@@ -118,7 +121,6 @@ def httpcall(url):
         sys.exit()
     else:
         urlopen(request)
-        inc_counter()
     return(response_code)
 
 
